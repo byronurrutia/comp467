@@ -1,3 +1,12 @@
+# Create an Argparse script...​
+
+# ​
+
+# Add arguments for importing any text file and a "verbose" option that prints each line if that option is flagged. Print the total lines from that file at the end of script​
+
+ 
+
+# Submit the code and output from running the script with "verbose" and one without "verbose"
 import argparse
 
 parser = argparse.ArgumentParser(description="import and count text file lines")
