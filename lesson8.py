@@ -1,3 +1,16 @@
+# 1.Lesson Question Answer
+
+
+# 2. Call a commandline tool, using subprocess and shlex . Write a script that calls the "ls"
+# command with " l" argument on a folder. Print the file and file size of the largest file.
+# command = 'ls -l /some/folder/with/stuff'
+# process =
+# subprocess.Popen
+# shlex.split (
+# stdout = subprocess.PIPE
+# stderr = subprocess.STDOUT # Redirect STDERR to STDOUT, conjoining the two streams
+# for line in iter process.stdout.readline ,
+
 import subprocess
 import shlex
 import os
