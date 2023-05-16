@@ -38,7 +38,7 @@ parser.add_argument("-e", "--export", action="store_true",
 args = parser.parse_args()
 
 myclient = pymongo.MongoClient(
-    "mongodb+srv://testuser:<Password>@seniorproject-west.ralsx.mongodb.net/test")
+    "mongodb+srv://testuser:<password>@seniorproject-west.ralsx.mongodb.net/test")
 mydb = myclient["mydatabase"]
 col2 = mydb["mycollection2"]
 
@@ -84,16 +84,20 @@ def framesToTimecode(frame):
 
 
 def isGreaterTimecode(frameTimecode, videoTimecode):
-    if int(frameTimecode.hours) > int(videoTimecode.hours):
+    if timecodeToFrames(frameTimecode) > timecodeToFrames(videoTimecode):
         return True
     else:
-        if int(frameTimecode.minutes) > int(videoTimecode.minutes):
-            return True
-        else:
-            if int(frameTimecode.seconds) > int(videoTimecode.seconds):
-                return True
-            else:
-                return False
+        return False
+
+
+def timecodeToFrames(timecode):
+    sum = 0
+    sum = sum + (int(timecode.minutes) * 60)
+    sum = sum + (int(timecode.hours * 3600))
+    sum = sum + (int(timecode.seconds))
+    framerate = sum * 60
+    framerate = framerate + int(timecode.frame)
+    return framerate
 
 
 def middleRangeTimecode(firstFrame, secondFrame):
